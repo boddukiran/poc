@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('admin', 'AdminController@index');
-Route::get('admin/login', 'AdminController@login');
+Route::get('dashboard', 'AdminController@index');
+Route::get('adminlogin', 'AdminController@login');
 Route::get('/', 'CustomerController@index');
 Route::get('login', 'CustomerController@login');
 Route::get('register', 'CustomerController@register');
-
