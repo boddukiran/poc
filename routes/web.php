@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('admin', 'AdminController@index');
+Route::get('admin/login', 'AdminController@login');
+Route::get('/', 'CustomerController@index');
+Route::get('login', 'CustomerController@login');
+Route::get('register', 'CustomerController@register');
