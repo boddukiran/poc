@@ -16,3 +16,4 @@ Route::get('adminlogin', 'AdminController@login');
 Route::get('/', 'CustomerController@index');
 Route::get('login', 'CustomerController@login');
 Route::get('register', 'CustomerController@register');
+Route::get('deletecustomerinfo/{cid}','AdminController@deleteCustomer');

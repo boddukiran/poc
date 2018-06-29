@@ -20,6 +20,7 @@
 <br/>
 <h3 style="text-align: center; color: blue">Admin DashBoard</h3>
 <br/>
+<form>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -34,36 +35,29 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mark@gmail.com</td>
-      <td>9000530158</td>
-      <td>F</td>
-      <td>India</td>
-      <td>Edit | Delete</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>9000530158</td>
-      <td>F</td>
-      <td>India</td>
-      <td>Edit | Delete</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>9000530158</td>
-      <td>F</td>
-      <td>India</td>
-      <td>Edit | Delete</td>
-    </tr>
+        <?php
+            if(count($customerData) > 0) {
+                $i=1;
+                foreach($customerData as $dataVal) { ?>
+                        <tr> 
+                            <th scope="row"><?=$i?></th>
+                            <td><?=  ucfirst($dataVal->fname)?></td>
+                            <td><?=$dataVal->lname?></td>
+                            <td><?=$dataVal->email?></td>
+                            <td><?=$dataVal->mobile?></td>
+                            <td><?=$dataVal->gender?></td>
+                            <td><?=$dataVal->country?></td>
+                           <td><a href="edit?id=<?=$dataVal->id?>">Edit</a> |
+                               <a href="deletecustomerinfo/<?=$dataVal->id?>" onclick="return confirm('Are you sure you want to delet?')">Delete</a>
+                               </td>
+                        </tr>
+                <?php
+                    $i++;
+                }
+            }
+        ?>
+</a>
   </tbody>
 </table>
+</form>
  @endsection
