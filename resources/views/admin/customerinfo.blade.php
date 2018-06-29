@@ -26,7 +26,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="cid" id="cid" value="{{ $customerInfo->id }}">
              <div class="form-group">                
-                <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{$customerInfo->fname}}">                
+                <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{$customerInfo->fname}}">
             </div>
             <div class="form-group">                
                 <input type="text" name="last_name" class="form-control" placeholder="Last Name" value="{{$customerInfo->lname}}">                
