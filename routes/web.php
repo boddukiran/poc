@@ -14,6 +14,7 @@
 Route::get('dashboard', 'AdminController@index');
 Route::get('adminlogin', 'AdminController@login');
 Route::get('customerinfo/{cid}', 'AdminController@getCustomerInfo');
+Route::post('updatecustomerinfo','AdminController@updateCustomerInfo');
 Route::get('/', 'CustomerController@index');
 Route::get('login', 'CustomerController@login');
 Route::get('register', 'CustomerController@register');
