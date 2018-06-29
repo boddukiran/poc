@@ -9,6 +9,7 @@
     <title>Login Page</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
   </head>
@@ -17,6 +18,7 @@
      @yield('navbar')
 
      @yield('content')
+
     
   </body>
 </html>
