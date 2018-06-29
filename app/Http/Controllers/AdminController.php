@@ -48,7 +48,8 @@ class AdminController extends Controller
         return redirect('dashboard');
     }
 
-    public function getMessage() {
-        return view('admin.messages');
+    public function getMessages() {
+        $query = DB::table('messages')->get();
+        return view('admin.message',['messages' => $query]);
     }
 }
