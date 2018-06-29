@@ -50,6 +50,7 @@
                 <input type="text" name="mobile" class="form-control" placeholder="mobile">                
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a  class="register" href="{{ url('/login') }}">Sign in</a>
             </form>
     </div>
   </div>
