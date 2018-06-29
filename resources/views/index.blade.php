@@ -3,13 +3,13 @@
 @section('navbar')
     <ul class="nav justify-content-end demo-nav">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Message</a>
+            <a class="nav-link active" href="{{ url('/message') }}">Message</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="{{ url('profile') }}">Profile</a>
         </li>  
         <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
         </li>        
     </ul>
 @endsection
