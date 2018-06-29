@@ -22,4 +22,10 @@ class AdminController extends Controller
         DB::delete('delete from customer where id = ?',[$id]);
         return back();
     }
+
+    public function getCustomerInfo(Request $request) {
+        $id = $request->cid;
+        $customerInfo = DB::table('customer')->where('id', $id)->first();
+        return view('admin.customerinfo',['customerInfo'=>$customerInfo]);
+    }
 }

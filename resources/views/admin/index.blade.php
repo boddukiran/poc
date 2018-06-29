@@ -41,13 +41,13 @@
                 foreach($customerData as $dataVal) { ?>
                         <tr> 
                             <th scope="row"><?=$i?></th>
-                            <td><?=  ucfirst($dataVal->fname)?></td>
+                            <td><?=ucfirst($dataVal->fname)?></td>
                             <td><?=$dataVal->lname?></td>
                             <td><?=$dataVal->email?></td>
                             <td><?=$dataVal->mobile?></td>
                             <td><?=$dataVal->gender?></td>
                             <td><?=$dataVal->country?></td>
-                           <td><a href="edit?id=<?=$dataVal->id?>">Edit</a> |
+                           <td><a href="customerinfo/<?=$dataVal->id?>">Edit</a> |
                                <a href="deletecustomerinfo/<?=$dataVal->id?>" onclick="return confirm('Are you sure you want to delet?')">Delete</a>
                                </td>
                         </tr>
