@@ -5,14 +5,15 @@
   <div class="row justify-content-center">
     <div class="col-4">
             <h1>Admin Login</h1>
-            <form id="login-form" method="post" action="{{action('AdminController@login')}}">
+            <form id="login-form" method="POST" action="{{action('AdminController@loginAction')}}">
+            {{ csrf_field() }}
             <div class="form-group">
                 <label>User Name</label>
-                <input type="text" class="form-control" id="userName" placeholder="Enter user Name">                
+                <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter user Name">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>            
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>

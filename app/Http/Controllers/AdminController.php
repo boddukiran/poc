@@ -7,14 +7,39 @@ use Illuminate\Http\Request;
  
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $query = DB::table('customer')->get();
-        return view('admin.index', ['customerData'=>$query]);
+        if ($request->session()->has('id')) {
+            $query = DB::table('customer')->get();
+            return view('admin.index', ['customerData'=>$query]);
+        }
+        return redirect('adminlogin'); 
     }
 
     public function login() {
         return view('admin.login');
+    }
+
+    public function loginAction(Request $request) {
+        if ($request->isMethod('post')) {
+            $user_data = $request->all();
+            $user_obj = DB::table('admin')->select('id', 'username')
+                    ->where([
+                        [ 'username', '=', $user_data['userName']],
+                        [ 'password', '=', $user_data['password']]
+                    ])
+                    ->first();
+            if ($user_obj) {
+                $request->session()->put('id', $user_obj->id);
+                return redirect('dashboard');
+            }
+        }
+
+        if ($request->session()->has('id')) {
+            return redirect('dashboard');
+        } else {
+            return redirect('adminlogin');
+        }
     }
 
     public function deleteCustomer(Request $request) {
@@ -48,8 +73,18 @@ class AdminController extends Controller
         return redirect('dashboard');
     }
 
-    public function getMessages() {
-        $query = DB::table('messages')->get();
-        return view('admin.message',['messages' => $query]);
+    public function getMessages(Request $request) {
+        if ($request->session()->has('id')) {
+            $query = DB::table('messages')->get();
+            return view('admin.message', ['messages' => $query]);
+        }
+        return redirect('/adminlogin');
+    }
+
+    public function logout(Request $request){
+        if($request->session()->has('id')){
+            $request->session()->forget('id');         
+        }
+        return redirect('/adminlogin');
     }
 }

@@ -9,8 +9,8 @@
         <a class="nav-link active" href="/messages">Messages</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-    </li>        
+        <a class="nav-link" href="{{ url('/adminlogout') }}">Logout</a>
+    </li>
 </ul>
 @endsection
 @section('content')
