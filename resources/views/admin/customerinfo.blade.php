@@ -1,20 +1,17 @@
 @extends('layouts.layout')
 
 @section('navbar')
-    <ul class="nav justify-content-end demo-nav">
+<ul class="nav justify-content-end demo-nav">
     <li class="nav-item">
-            <a class="nav-link active" href="#">Messages</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Users</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
-        </li>        
-    </ul>
+        <a class="nav-link active" href="/dashboard">DashBoard</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/messages">Messages</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/adminlogout') }}">Logout</a>
+    </li>
+</ul>
 @endsection
 
 @section('content')

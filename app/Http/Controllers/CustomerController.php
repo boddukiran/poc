@@ -50,11 +50,47 @@ class CustomerController extends Controller
         return view('register');
     }
 
-    public function profile(){
-        return view('profile');
+    public function profile(Request $request) {
+        if ($request->session()->has('id')) {
+            $user_obj = DB::table('customer')->where('id', $request->session()->get('id'))->first();
+            return view('profile', ['userDetails' => $user_obj]);
+        }
+        return redirect('/login');
     }
 
     public function message(){
-        return view('message');
+        return view('messages');
+    }
+
+    public function updateCustomerInfo(Request $request) {
+        $data = [
+            'fname' => $request->first_name,
+            'lname' => $request->last_name,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'country' => $request->country,
+            'state' => $request->state,
+            'city' => $request->city,
+            'countrycode' => $request->zipcode,
+            'address' => $request->address,
+            'mobile' => $request->mobile,
+        ];
+        DB::table('customer')
+                ->where('id', $request->cid)
+                ->update($data);
+        return redirect('/');
+    }
+
+    public function saveMessage(Request $request) {
+        if($request->isMethod('post')) {
+            $data = [
+                'email' => $request->email,
+                'subject' => $request->subject,
+                'message' => $request->message,
+                'customerID' => $request->session()->has('id')
+            ];
+            DB::table('messages')->insert($data);
+            return redirect('/');
+        }
     }
 }
