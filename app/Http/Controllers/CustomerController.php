@@ -29,15 +29,24 @@ class CustomerController extends Controller
     {
         if ($request->isMethod('post')) {
             $user_data = $request->all();
-            $user_obj = DB::table('customer')->select('id', 'email', 'fname', 'lname')
+            $user_obj = DB::table('customer')->select('id', 'email', 'fname', 'lname', 'role', 'status')
                 ->where([
                     [ 'email', '=' , $user_data['email'] ],
                     [ 'password', '=' , $user_data['password'] ]
                 ])
                 ->first();
+
             if($user_obj){
                 $request->session()->put('id', $user_obj->id);
-                return redirect('/');
+                if($user_obj->role == 1 && $user_obj->status == 1) {
+                    return redirect('dashboard');
+                }
+                if($user_obj->role == 0 && $user_obj->status == 1) {
+                    return redirect('/');
+                }
+                else {
+                    return redirect('login');
+                }
             }          
         }
 
