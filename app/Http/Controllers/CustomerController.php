@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\VerificationLink;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
  
 class CustomerController extends Controller
 {
@@ -49,6 +50,7 @@ class CustomerController extends Controller
 
     public function register(Request $request)
     {
+
         if ($request->isMethod('post')) {
             $data = [
                 'fname' => $request->first_name,
@@ -60,14 +62,20 @@ class CustomerController extends Controller
                 'city' => $request->city,
                 'countrycode' => $request->zipcode,
                 'address' => $request->address,
-                'mobile' => $request->mobile,
-                'password' => $request->password
+                'phone' => $request->mobile,
+                'password' => encrypt($request->password),
+                'countrycode' => '+91'
             ];
             DB::table('customer')->insert($data);
-            Mail::to($data['email'])->send(new VerificationLink(object($data)));
+            $data['email'] = encrypt($data['email']);
+            Mail::to($data['email'])->send(new VerificationLink((object)$data));
             return redirect('/login')->with('status', 'Registered Successfully.  Please complete the verification process through your email.');
         }
         return view('register');
+    }
+
+    public function verify(){
+        return redirect('/login')->with('status', 'Verification Success.  Please login.');
     }
 
     public function profile(){

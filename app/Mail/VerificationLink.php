@@ -12,6 +12,12 @@ class VerificationLink extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * The user object instance.
+     *
+     * @var user
+     */
+    public $user;
+    /**
      * Create a new message instance.
      *
      * @return void
@@ -28,6 +34,7 @@ class VerificationLink extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.verification');
+        return $this->from('demoapp@demo.com')
+        ->view('mails.verification');
     }
 }

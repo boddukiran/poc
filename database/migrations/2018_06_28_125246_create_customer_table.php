@@ -26,7 +26,6 @@ class CreateCustomerTable extends Migration
             $table->string('state');
             $table->string('phone');
             $table->string('countrycode');
-            $table->string('mobile');
         });
     }
 
