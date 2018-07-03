@@ -20,6 +20,14 @@
             <a  class="register" href="{{ url('/register') }}">Sign up</a>
             
             </form>
+
+            @if (session('status'))
+                <div class="alert alert-success" style="margin-top: 30px;">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+
     </div>
   </div>
 </div>

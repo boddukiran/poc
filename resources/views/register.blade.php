@@ -5,8 +5,8 @@
   <div class="row justify-content-center">
     <div class="col-4">
             <h1>Register</h1>
-            <form id="register-form">
-
+            <form id="register-form" method="POST" action="{{ url('/register') }}">
+            {{ csrf_field() }}
              <div class="form-group">                
                 <input type="text" name="first_name" class="form-control" placeholder="First Name">                
             </div>

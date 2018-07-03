@@ -25,6 +25,8 @@ Route::get('profile', 'CustomerController@profile');
 Route::get('message', 'CustomerController@message');
 Route::post('login', 'CustomerController@login');
 Route::get('register', 'CustomerController@register');
+Route::post('register', 'CustomerController@register');
+Route::get('verify', 'CustomerController@verify');
 Route::get('deletecustomerinfo/{cid}','AdminController@deleteCustomer');
 Route::post('updateuserprofile','CustomerController@updateCustomerInfo');
 Route::post('savemessage', 'CustomerController@saveMessage');
