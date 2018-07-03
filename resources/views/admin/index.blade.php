@@ -9,7 +9,7 @@
         <a class="nav-link active" href="/messages">Messages</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/adminlogout') }}">Logout</a>
+        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
     </li>     
 </ul>
 @endsection

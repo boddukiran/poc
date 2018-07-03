@@ -7,40 +7,43 @@ use Illuminate\Http\Request;
  
 class AdminController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         if ($request->session()->has('id')) {
-            $query = DB::table('customer')->get();
-            return view('admin.index', ['customerData'=>$query]);
+            $query = DB::table('customer')
+                            ->WHERE([
+                                ['role', '!=', 1],
+                                ['status', '=', 1]
+                            ])->get();
+            return view('admin.index', ['customerData' => $query]);
         }
-        return redirect('adminlogin'); 
+        return redirect('login');
     }
 
-    public function login() {
-        return view('admin.login');
-    }
-
-    public function loginAction(Request $request) {
-        if ($request->isMethod('post')) {
-            $user_data = $request->all();
-            $user_obj = DB::table('admin')->select('id', 'username')
-                    ->where([
-                        [ 'username', '=', $user_data['userName']],
-                        [ 'password', '=', $user_data['password']]
-                    ])
-                    ->first();
-            if ($user_obj) {
-                $request->session()->put('id', $user_obj->id);
-                return redirect('dashboard');
-            }
-        }
-
-        if ($request->session()->has('id')) {
-            return redirect('dashboard');
-        } else {
-            return redirect('adminlogin');
-        }
-    }
+//    public function login() {
+//        return view('admin.login');
+//    }
+//
+//    public function loginAction(Request $request) {
+//        if ($request->isMethod('post')) {
+//            $user_data = $request->all();
+//            $user_obj = DB::table('admin')->select('id', 'username')
+//                    ->where([
+//                        [ 'username', '=', $user_data['userName']],
+//                        [ 'password', '=', $user_data['password']]
+//                    ])
+//                    ->first();
+//            if ($user_obj) {
+//                $request->session()->put('id', $user_obj->id);
+//                return redirect('dashboard');
+//            }
+//        }
+//
+//        if ($request->session()->has('id')) {
+//            return redirect('dashboard');
+//        } else {
+//            return redirect('adminlogin');
+//        }
+//    }
 
     public function deleteCustomer(Request $request) {
         $id = $request->cid;
@@ -78,13 +81,13 @@ class AdminController extends Controller
             $query = DB::table('messages')->get();
             return view('admin.message', ['messages' => $query]);
         }
-        return redirect('/adminlogin');
+        return redirect('/login');
     }
 
-    public function logout(Request $request){
-        if($request->session()->has('id')){
-            $request->session()->forget('id');         
-        }
-        return redirect('/adminlogin');
-    }
+//    public function logout(Request $request){
+//        if($request->session()->has('id')){
+//            $request->session()->forget('id');  
+//        }
+//        return redirect('/adminlogin');
+//    }
 }

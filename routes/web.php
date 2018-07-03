@@ -12,7 +12,7 @@
 */
 
 Route::get('dashboard', 'AdminController@index');
-Route::get('adminlogin', 'AdminController@login');
+//Route::get('adminlogin', 'AdminController@login');
 Route::post('loginaction', 'AdminController@loginAction');
 Route::get('customerinfo/{cid}', 'AdminController@getCustomerInfo');
 Route::post('updatecustomerinfo','AdminController@updateCustomerInfo');
@@ -30,3 +30,4 @@ Route::get('verify', 'CustomerController@verify');
 Route::get('deletecustomerinfo/{cid}','AdminController@deleteCustomer');
 Route::post('updateuserprofile','CustomerController@updateCustomerInfo');
 Route::post('savemessage', 'CustomerController@saveMessage');
+Route::get('resetpassword', 'CustomerController@resetPassword');
