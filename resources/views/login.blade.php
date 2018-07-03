@@ -4,7 +4,7 @@
 <div class="container login-content">
   <div class="row justify-content-center">
     <div class="col-4">
-            <h1>Customer Login</h1>
+            <h1>Login</h1>
             <form id="login-form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <div class="form-group">

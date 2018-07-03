@@ -77,4 +77,8 @@ class CustomerController extends Controller
     public function message(){
         return view('messages');
     }
+
+    public function resetPassword(){
+        return view('resetpassword');
+    }
 }
