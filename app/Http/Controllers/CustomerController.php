@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\VerificationLink;
+use Illuminate\Support\Facades\Mail;
  
 class CustomerController extends Controller
 {
@@ -45,52 +47,34 @@ class CustomerController extends Controller
         return view('login');
     }
 
-    public function register()
+    public function register(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $data = [
+                'fname' => $request->first_name,
+                'lname' => $request->last_name,
+                'email' => $request->email,
+                'gender' => $request->gender,
+                'country' => $request->country,
+                'state' => $request->state,
+                'city' => $request->city,
+                'countrycode' => $request->zipcode,
+                'address' => $request->address,
+                'mobile' => $request->mobile,
+                'password' => $request->password
+            ];
+            DB::table('customer')->insert($data);
+            Mail::to($data['email'])->send(new VerificationLink(object($data)));
+            return redirect('/login')->with('status', 'Registered Successfully.  Please complete the verification process through your email.');
+        }
         return view('register');
     }
 
-    public function profile(Request $request) {
-        if ($request->session()->has('id')) {
-            $user_obj = DB::table('customer')->where('id', $request->session()->get('id'))->first();
-            return view('profile', ['userDetails' => $user_obj]);
-        }
-        return redirect('/login');
+    public function profile(){
+        return view('profile');
     }
 
     public function message(){
         return view('messages');
-    }
-
-    public function updateCustomerInfo(Request $request) {
-        $data = [
-            'fname' => $request->first_name,
-            'lname' => $request->last_name,
-            'email' => $request->email,
-            'gender' => $request->gender,
-            'country' => $request->country,
-            'state' => $request->state,
-            'city' => $request->city,
-            'countrycode' => $request->zipcode,
-            'address' => $request->address,
-            'mobile' => $request->mobile,
-        ];
-        DB::table('customer')
-                ->where('id', $request->cid)
-                ->update($data);
-        return redirect('/');
-    }
-
-    public function saveMessage(Request $request) {
-        if($request->isMethod('post')) {
-            $data = [
-                'email' => $request->email,
-                'subject' => $request->subject,
-                'message' => $request->message,
-                'customerID' => $request->session()->has('id')
-            ];
-            DB::table('messages')->insert($data);
-            return redirect('/');
-        }
     }
 }
