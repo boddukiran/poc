@@ -16,7 +16,7 @@ class CustomerController extends Controller
     {
         if ($request->session()->has('id')) {
             $user_obj = DB::table('customer')->where('id', $request->session()->get('id'))->first();            
-            return view('index');
+            return view('index', ['user' => $user_obj]);
         }
         return redirect('/login');        
     }
@@ -37,12 +37,13 @@ class CustomerController extends Controller
                     [ 'email', '=' , $user_data['email'] ]
                 ])
                 ->first();
-            if($user_obj && decrypt($user_obj->password) == $user_data['password'] ){
-                $request->session()->put('id', $user_obj->id);                
+            if($user_obj && decrypt($user_obj->password) == $user_data['password'] ){                                
                 if($user_obj->role == 1 && $user_obj->status == 1) {
+                    $request->session()->put('id', $user_obj->id);
                     return redirect('dashboard');
                 }
                 if($user_obj->role == 0 && $user_obj->status == 1) {
+                    $request->session()->put('id', $user_obj->id);
                     return redirect('/');
                 }
                 else {
@@ -100,8 +101,9 @@ class CustomerController extends Controller
                 DB::table('customer')
                 ->where('email', $email)
                 ->update(array('status' => 1));    
-                $admin_obj = DB::table('customer')->select('email')->where(['status', '=', 1],['role', '=', 1])->first();
-                Mail::to($admin_obj->email)->send(new NotifyAdmin($user_obj));
+                $admin_obj = DB::table('customer')->select('email')->where([ ['status', '=', 1],['role', '=', 1] ])->first();
+                if($admin_obj)
+                    Mail::to($admin_obj->email)->send(new NotifyAdmin($user_obj));
                 return redirect('/login')->with('status', 'Verification Success.  Please login.');
             }            
             return redirect('/login')->with('status', 'Unable to verify. Please contact admin@demoapp.com');

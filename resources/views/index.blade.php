@@ -18,7 +18,7 @@
 <div class="container login-content">
   <div class="row justify-content-center">
     <div class="col-4">
-        hello customer...
+        <h4>Hi, {{ $user->fname }} {{ $user->lname }}</h4>
     </div>
   </div>
 </div>
