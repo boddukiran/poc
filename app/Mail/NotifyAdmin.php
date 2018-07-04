@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ResetPasswordLink extends Mailable
+class NotifyAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
