@@ -119,7 +119,11 @@ class CustomerController extends Controller
         return redirect('/login');
     }
 
-    public function message(){
+    public function message(Request $request){
+
+        if( !$request->session()->has('id') )
+            return redirect('/login');
+
         return view('messages');
     }
 
@@ -163,6 +167,11 @@ class CustomerController extends Controller
     }
 
     public function saveMessage(Request $request) {
+
+        if(!$request->session()->has('id')){
+            return redirect('/login');
+        }
+
         if($request->isMethod('post')) {
             $data = [
                 'email' => $request->email,
@@ -177,6 +186,11 @@ class CustomerController extends Controller
 
 
     public function updateCustomerInfo(Request $request) {
+
+        if(!$request->session()->has('id')){
+            return redirect('/login');
+        }
+
         $data = [
             'fname' => $request->first_name,
             'lname' => $request->last_name,

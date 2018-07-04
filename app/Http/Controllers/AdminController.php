@@ -11,7 +11,6 @@ class AdminController extends Controller
         if ($request->session()->has('id')) {
             $query = DB::table('customer')
                             ->WHERE([
-                                ['role', '!=', 1],
                                 ['status', '=', 1]
                             ])->get();
             return view('admin.index', ['customerData' => $query]);
