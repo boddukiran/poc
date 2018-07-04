@@ -41,20 +41,25 @@
                         Female
                     </label>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="country" class="form-control" placeholder="Country" value="{{$customerInfo->country}}">
-                </div>
+                <div class="form-group">                
+                    <select class="form-control" name="country">
+                    <option>Select Country</option>
+                    @foreach($countries as $key => $country)
+                        <option  @if($customerInfo->country == $country->nicename) Selected @endif value="{{ $country->nicename }}">{{ $country->nicename }}</option>                
+                    @endforeach
+                    </select>
+                </div>                
                 <div class="form-group">
                     <input type="text" name="state" class="form-control" placeholder="State" value="{{$customerInfo->state}}">
                 </div>
                 <div class="form-group">
                     <input type="text" name="city" class="form-control" placeholder="City" value="{{$customerInfo->city}}">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="zipcode" class="form-control" placeholder="zipcode" value="{{$customerInfo->countrycode}}">
-                </div>
+                </div>                
                 <div class="form-group">
                     <input type="text" name="address" class="form-control" placeholder="Address" value="{{$customerInfo->address}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="zipcode" class="form-control" placeholder="Phone Code" value="{{$customerInfo->countrycode}}">
                 </div>
                 <div class="form-group">
                     <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$customerInfo->phone}}">

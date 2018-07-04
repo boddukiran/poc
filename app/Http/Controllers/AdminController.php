@@ -9,40 +9,11 @@ class AdminController extends Controller
 {
     public function index(Request $request) {
         if ($request->session()->has('id')) {
-            $query = DB::table('customer')
-                            ->WHERE([
-                                ['status', '=', 1]
-                            ])->get();
+            $query = DB::table('customer')->get();
             return view('admin.index', ['customerData' => $query]);
         }
         return redirect('login');
     }
-
-//    public function login() {
-//        return view('admin.login');
-//    }
-//
-//    public function loginAction(Request $request) {
-//        if ($request->isMethod('post')) {
-//            $user_data = $request->all();
-//            $user_obj = DB::table('admin')->select('id', 'username')
-//                    ->where([
-//                        [ 'username', '=', $user_data['userName']],
-//                        [ 'password', '=', $user_data['password']]
-//                    ])
-//                    ->first();
-//            if ($user_obj) {
-//                $request->session()->put('id', $user_obj->id);
-//                return redirect('dashboard');
-//            }
-//        }
-//
-//        if ($request->session()->has('id')) {
-//            return redirect('dashboard');
-//        } else {
-//            return redirect('adminlogin');
-//        }
-//    }
 
     public function deleteCustomer(Request $request) {
         $id = $request->cid;
@@ -53,7 +24,8 @@ class AdminController extends Controller
     public function getCustomerInfo(Request $request) {
         $id = $request->cid;
         $customerInfo = DB::table('customer')->where('id', $id)->first();
-        return view('admin.customerinfo',['customerInfo'=>$customerInfo]);
+        $countries = DB::table('country')->select('nicename','phonecode')->get();
+        return view('admin.customerinfo',['customerInfo'=>$customerInfo, 'countries'=> $countries]);
     }
 
     public function updateCustomerInfo(Request $request) {

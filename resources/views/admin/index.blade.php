@@ -29,6 +29,7 @@
       <th scope="col">Gender</th>
       <th scope="col">Country</th>
       <th scope="col">Role</th>
+      <th scope="col">Status</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -47,8 +48,17 @@
                     Female
                 @endif
             </td>            
-            <td>{{ ucfirst(trans($dataVal->country)) }}</td>
+            <td>                
+                {{ ucfirst(trans($dataVal->country)) }}
+            </td>
             <td>@if($dataVal->role == 1) Admin @endif</td>
+            <td>
+                @if($dataVal->status == 1)
+                    Registered
+                @elseif ($dataVal->status == 0)
+                    Pending Verification
+                @endif
+            </td>
             <td><a href="customerinfo/{{ $dataVal->id }}">Edit</a> 
                 @if($dataVal->role != 1) 
                 | <a href="deletecustomerinfo/{{ $dataVal->id }}" onclick="return confirm('Are you sure you want to delet?')">Delete</a>

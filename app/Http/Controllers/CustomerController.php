@@ -77,7 +77,7 @@ class CustomerController extends Controller
                 'address' => $request->address,
                 'phone' => $request->mobile,
                 'password' => encrypt($request->password),
-                'countrycode' => '+91',
+                'countrycode' => $request->phonecode,
                 'role' => 0,
                 'status' => 0
             ];
@@ -86,7 +86,9 @@ class CustomerController extends Controller
             Mail::to($data['email'])->send(new VerificationLink((object)$data));
             return redirect('/login')->with('status', 'Registered Successfully.  Please complete the verification process through your email.');
         }
-        return view('register');
+
+        $countries = DB::table('country')->select('nicename','phonecode')->get();
+        return view('register', ['countries' => $countries]);
     }
 
     public function verify(Request $request, $code){
