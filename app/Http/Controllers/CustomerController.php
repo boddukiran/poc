@@ -116,7 +116,8 @@ class CustomerController extends Controller
     public function profile(Request $request) {
         if ($request->session()->has('id')) {
             $user_obj = DB::table('customer')->where('id', $request->session()->get('id'))->first();
-            return view('profile', ['userDetails' => $user_obj]);
+            $countries = DB::table('country')->select('nicename','phonecode')->get();
+            return view('profile', ['userDetails' => $user_obj, 'countries' => $countries]);
         }
         return redirect('/login');
     }
