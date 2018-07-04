@@ -3,7 +3,7 @@ Hello <i>{{ $user->fname }} {{ $user->lname }}</i>,
  
 Please click on the following link to complete the registration process 
 
-<a href="{{ url('/verify/') }}/{{ $user->email }}">click here</a>
+<a href="{{ url('/verify/') }}/{{ $user->code }}">click here</a>
 
 <br/><br/> 
 Thank You,

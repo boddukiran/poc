@@ -68,7 +68,7 @@ class AdminController extends Controller
             'city' => $request->city,
             'countrycode' => $request->zipcode,
             'address' => $request->address,
-            'mobile' => $request->mobile,
+            'phone' => $request->mobile,
         ];
         DB::table('customer')
                 ->where('id', $request->cid)

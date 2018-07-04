@@ -17,7 +17,8 @@
             </div>            
             <button type="submit" class="btn btn-primary">Submit</button>
             
-            <a  class="register" href="{{ url('/register') }}">Sign up</a>
+            <a  class="register" href="{{ url('/register') }}">Sign up !</a>
+            <a  class="register" style="margin-right:10px;"  href="{{ url('/forgotpassword') }}">Forgot Password ?</a>
             
             </form>
 

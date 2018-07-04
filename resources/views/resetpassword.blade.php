@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-4">
             <h1>Reset Password</h1>
-            <form id="reset-form" method="POST" action="">
+            <form id="reset-form" method="POST" action="{{ url('/resetpassword') }}/{{ $code }}">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="exampleInputoldpassword">Old Password</label>
@@ -21,6 +21,12 @@
             </div> 
             <button type="submit" class="btn btn-primary">Submit</button>
             
+            @if (session('status'))
+                <div class="alert alert-success" style="margin-top: 30px;">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             </form>
     </div>
   </div>

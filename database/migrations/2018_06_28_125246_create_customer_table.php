@@ -18,7 +18,7 @@ class CreateCustomerTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
-            $table->string('password');
+            $table->longText('password');
             $table->string('gender');
             $table->string('country');
             $table->string('address');
@@ -26,6 +26,8 @@ class CreateCustomerTable extends Migration
             $table->string('state');
             $table->string('phone');
             $table->string('countrycode');
+            $table->integer('role');
+            $table->integer('status');
         });
     }
 

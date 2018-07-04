@@ -57,7 +57,7 @@
                     <input type="text" name="address" class="form-control" placeholder="Address" value="{{$customerInfo->address}}">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$customerInfo->mobile}}">
+                    <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$customerInfo->phone}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
