@@ -34,3 +34,5 @@ Route::post('updateuserprofile','CustomerController@updateCustomerInfo');
 Route::post('savemessage', 'CustomerController@saveMessage');
 Route::get('resetpassword/{code}', 'CustomerController@resetpassword');
 Route::post('resetpassword/{code}', 'CustomerController@resetpassword');
+Route::post('updateuserprofile','CustomerController@updateCustomerInfo');
+Route::post('savemessage', 'CustomerController@saveMessage');
