@@ -3,7 +3,7 @@
 @section('navbar')
 <ul class="nav justify-content-end demo-nav">
     <li class="nav-item">
-        <a class="nav-link active" href="/dashboard">DashBoard</a>
+        <a class="nav-link active" href="/dashboard">Dashboard</a>
     </li>
     <li class="nav-item">
         <a class="nav-link active" href="/messages">Messages</a>
@@ -15,7 +15,7 @@
 @endsection
 @section('content')
 <br/>
-<h3 style="text-align: center; color: blue">Query</h3>
+<h3 style="text-align: center;">Customer Messages</h3>
 <br/>
 <form>
 <table class="table table-striped">

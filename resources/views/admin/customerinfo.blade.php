@@ -3,7 +3,7 @@
 @section('navbar')
 <ul class="nav justify-content-end demo-nav">
     <li class="nav-item">
-        <a class="nav-link active" href="/dashboard">DashBoard</a>
+        <a class="nav-link active" href="/dashboard">Dashboard</a>
     </li>
     <li class="nav-item">
         <a class="nav-link active" href="/messages">Messages</a>
@@ -18,7 +18,7 @@
 <div class="container login-content">
     <div class="row justify-content-center">
         <div class="col-4">
-            <h1>Customer Details</h1>
+            <h4>Edit Customer Profile</h4>
             <form id="register-form" method="post" action="{{action('AdminController@updateCustomerInfo')}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="cid" id="cid" value="{{ $customerInfo->id }}">

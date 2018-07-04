@@ -18,7 +18,7 @@
 <div class="container login-content">
     <div class="row justify-content-center">
         <div class="col-4">
-            <h1>Profile Details</h1>
+            <h1>Profile</h1>
             <form id="register-form" method="post" action="{{action('CustomerController@updateCustomerInfo')}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="cid" id="cid" value="{{ $userDetails->id }}">

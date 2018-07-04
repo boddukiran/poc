@@ -22,7 +22,7 @@
             <form id="login-form" method="POST" action="{{ action('CustomerController@saveMessage') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" name="subject" placeholder="Subject">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <label for="exampleFormControlTextarea1">Message</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
