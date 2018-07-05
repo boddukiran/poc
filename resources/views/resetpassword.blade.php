@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputNewPassword1">New Password</label>
-                <input type="password" class="form-control" name="new_password" placeholder="Enter new Password">
+                <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new Password">
             </div>
             <div class="form-group">
                 <label for="exampleInputConfirmPassword1">Confirm Password</label>
@@ -25,12 +25,19 @@
                     rules: {
                         old_password: {
                             required: true,
+                            minlength: 3,
+                            maxlength: 5,
                         },
                         new_password: {
                             required: true,
+                            minlength: 3,
+                            maxlength: 5,
                         },
                         confirm_password: {
                             required: true,
+                            equalTo: "#new_password",
+                            minlength: 3,
+                            maxlength: 5,
                         }
                     },
                     messages: {
@@ -42,6 +49,7 @@
                         },
                         confirm_password: {
                             required: "Please enter confirm password",
+                            equalTo: "Passwords doesnot match"
                         }
                     }
                  });

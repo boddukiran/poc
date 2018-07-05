@@ -21,19 +21,19 @@
             </div>          
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="gender" value="1">
-                <label class="form-check-label" style="width:70px;margin-bottom:15px;" >
+                <label class="form-check-label" style="width:70px;margin-bottom:10px;" >
                     Male
                 </label>
                 <input class="form-check-input" type="radio" name="gender" value="0">
-                <label class="form-check-label" >
+                <label class="form-check-label" id="error-gender-label" >
                     Female
                 </label>
+                
             </div>
             
-            <div class="form-group"> 
-                               
+            <!-- <div class="form-group">                                
                 <input type="text" name="dob" class="form-control" placeholder="mm/dd/yyyy">                
-            </div> 
+            </div>   -->
             <div class="form-group">                
                 <select class="form-control" name="country_alias">
                 <option value=''>Select Country</option>
@@ -67,12 +67,20 @@
             </form>
             <script>
         $("#register-form").validate({
-           rules: {
+            normalizer: function(value) {
+                return $.trim(value);
+            }, 
+           rules: {            
             first_name: {
-                required: true
+                required: true,                
             },
             last_name: {
                 required: true
+            },
+            password: {
+                required: true,
+                minlength: 3,
+                maxlength: 5,
             },
             email: {
                 required: true,
@@ -127,6 +135,16 @@
             mobile: {
                 required: "Please enter mobile number",
                 number: 'Please enter a valid mobile number'
+            },
+            password: {
+                required: "Please enter password"
+            }
+        },
+        errorPlacement: function(error, element) {
+            if (element.attr("name") == "gender") {
+                error.insertAfter("#error-gender-label");
+            } else {
+                error.insertAfter(element);
             }
         }
     });

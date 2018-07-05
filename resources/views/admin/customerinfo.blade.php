@@ -73,6 +73,9 @@
             </form>
             <script>
         $("#register-form").validate({
+            normalizer: function(value) {
+                return $.trim(value);
+            },
            rules: {
             first_name: {
                 required: true

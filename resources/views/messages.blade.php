@@ -37,6 +37,9 @@
             </form>
             <script>                
                 $("#messages-form").validate({
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    },
                     rules: {
                         email: {
                             required: true,
