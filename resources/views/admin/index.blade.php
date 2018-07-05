@@ -40,7 +40,7 @@
             <td>{{ ucfirst(trans($dataVal->fname)) }}</td>
             <td>{{ $dataVal->lname }}</td>
             <td>{{ $dataVal->email }}</td>
-            <td>{{ $dataVal->phone }}</td>
+            <td>{{$dataVal->countrycode}}- {{ $dataVal->phone }}</td>
             <td>
                 @if($dataVal->gender == 1)
                     Male

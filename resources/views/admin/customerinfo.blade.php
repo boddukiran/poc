@@ -71,6 +71,72 @@
                 </div>                
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <script>
+        $("#register-form").validate({
+           rules: {
+            first_name: {
+                required: true
+            },
+            last_name: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            gender: {
+                required: true
+            },
+            country: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            mobile: {
+                required: true,
+                number: true
+            }
+        },
+        messages: {
+            first_name: {
+                required: "Please enter first name"
+            },
+            last_name: {
+                required: "Please enter last name"
+            },
+            email: {
+                required: "Please enter email address",
+                email: "Please enter valid email address"
+            },
+            gender: {
+                required: "Please select gender"
+            },
+            country: {
+                required: "Please select country"
+            },
+            state: {
+                required: "Please enter state"
+            },
+            city: {
+                required: "Please enter city"
+            },
+            address: {
+                required: "Please enter address"
+            },
+            mobile: {
+                required: "Please enter mobile number",
+                number: 'Please enter a valid mobile number'
+            }
+        }
+    });
+            </script>
         </div>
     </div>
 </div>

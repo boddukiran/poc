@@ -15,7 +15,22 @@
             <a  class="register" href="{{ url('/register') }}">Sign up !</a>
             
             </form>
-
+            <script>
+                $("#reset-form").validate({
+                    rules: {
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                    },
+                    messages: {
+                        email: {
+                            required: "Please enter email address",
+                            email: "Please enter valid email address"
+                        },
+                    }
+                 });
+            </script>
             @if (session('status'))
                 <div class="alert alert-success" style="margin-top: 30px;">
                     {{ session('status') }}
