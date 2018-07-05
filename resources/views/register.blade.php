@@ -60,8 +60,7 @@
                     <div class="col-8">
                         <input type="text" name="mobile" class="form-control" placeholder="mobile">    
                     </div>
-                </div>             
-                                
+                </div>                                             
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <a  class="register" href="{{ url('/login') }}">Sign in</a>

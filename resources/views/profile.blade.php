@@ -58,13 +58,17 @@
                 
                 <div class="form-group">
                     <input type="text" name="address" class="form-control" placeholder="Address" value="{{$userDetails->address}}">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="zipcode" class="form-control" placeholder="Phone Code" value="{{$userDetails->countrycode}}">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$userDetails->phone}}">
-                </div>
+                </div>                
+                <div class="form-group">   
+                    <div class="row">
+                        <div class="col-4">
+                        <input type="text" name="zipcode" class="form-control" placeholder="Phone Code" value="{{$userDetails->countrycode}}">
+                        </div>
+                        <div class="col-8">
+                        <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$userDetails->phone}}">
+                        </div>
+                    </div>                                             
+                </div>                                
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
