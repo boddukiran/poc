@@ -42,12 +42,13 @@
                     </label>
                 </div>
                 <div class="form-group">                
-                    <select class="form-control" name="country" required>
+                    <select class="form-control" name="country_alias">
                     <option value=''>Select Country</option>
                     @foreach($countries as $key => $country)
-                        <option  @if($customerInfo->country == $country->nicename) Selected @endif value="{{ $country->nicename }}">{{ $country->nicename }}</option>                
+                        <option  @if($customerInfo->country == $country->nicename) Selected @endif value="{{ $country->phonecode }}">{{ $country->nicename }}</option>                
                     @endforeach
                     </select>
+                    <input type="hidden" name="country" />
                 </div>                
                 <div class="form-group">
                     <input type="text" name="state" class="form-control" placeholder="State" value="{{$customerInfo->state}}">
@@ -62,7 +63,7 @@
                 <div class="form-group">   
                     <div class="row">
                         <div class="col-4">
-                            <input type="text" name="zipcode" class="form-control" placeholder="Phone Code" value="{{$customerInfo->countrycode}}">
+                            <input type="text" name="zipcode" class="form-control" placeholder="Phone Code" value="{{$customerInfo->countrycode}}" readonly> 
                         </div>
                         <div class="col-8">
                         <input type="text" name="mobile" class="form-control" placeholder="mobile" value="{{$customerInfo->phone}}">
@@ -90,7 +91,7 @@
             gender: {
                 required: true
             },
-            country: {
+            country_alias: {
                 required: true
             },
             state: {
@@ -121,7 +122,7 @@
             gender: {
                 required: "Please select gender"
             },
-            country: {
+            country_alias: {
                 required: "Please select country"
             },
             state: {
@@ -144,3 +145,14 @@
     </div>
 </div>
 @endsection
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded',function() {
+        document.querySelector('select[name=country_alias]').onchange=changeEventHandler;
+    },false);
+
+    function changeEventHandler(event) {                    
+        document.querySelector('input[name=zipcode]').value = '+'+event.target.value;
+        document.querySelector('input[name=country]').value = event.target.options[event.target.selectedIndex].text;
+    }                               
+ </script>

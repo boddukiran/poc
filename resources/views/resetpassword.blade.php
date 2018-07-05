@@ -22,6 +22,9 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <script>
                 $("#resetpassword-form").validate({
+                    normalizer: function(value) {
+                        return $.trim(value);
+                    },
                     rules: {
                         old_password: {
                             required: true,
