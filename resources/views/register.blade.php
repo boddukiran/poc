@@ -80,7 +80,6 @@
             password: {
                 required: true,
                 minlength: 3,
-                maxlength: 5,
             },
             email: {
                 required: true,

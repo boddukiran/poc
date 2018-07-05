@@ -33,7 +33,6 @@
                         password: {
                             required: true,
                             minlength: 3,
-                            maxlength: 5,
                         }
                     },
                     messages: {

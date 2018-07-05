@@ -26,18 +26,15 @@
                         old_password: {
                             required: true,
                             minlength: 3,
-                            maxlength: 5,
                         },
                         new_password: {
                             required: true,
                             minlength: 3,
-                            maxlength: 5,
                         },
                         confirm_password: {
                             required: true,
                             equalTo: "#new_password",
                             minlength: 3,
-                            maxlength: 5,
                         }
                     },
                     messages: {
