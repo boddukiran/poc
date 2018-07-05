@@ -17,3 +17,8 @@
     float: right;
     margin-top: 8px;
 }
+
+.error {
+    color: red;
+    margin-bottom: 0px;
+}
