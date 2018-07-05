@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">                
                     <select class="form-control" name="country">
-                    <option>Select Country</option>
+                    <option value=''>Select Country</option>
                     @foreach($countries as $key => $country)
                         <option  @if($userDetails->country == $country->nicename) Selected @endif value="{{ $country->nicename }}">{{ $country->nicename }}</option>                
                     @endforeach

@@ -36,7 +36,7 @@
             </div> 
             <div class="form-group">                
                 <select class="form-control" name="country_alias">
-                <option Selected>Select Country</option>
+                <option value=''>Select Country</option>
                 @foreach($countries as $key => $country)
                     <option value="{{ $country->phonecode }}">{{ $country->nicename }}</option>                
                 @endforeach
@@ -81,7 +81,7 @@
             gender: {
                 required: true
             },
-            country: {
+            country_alias: {
                 required: true
             },
             state: {
@@ -112,7 +112,7 @@
             gender: {
                 required: "Please select gender"
             },
-            country: {
+            country_alias: {
                 required: "Please select country"
             },
             state: {
