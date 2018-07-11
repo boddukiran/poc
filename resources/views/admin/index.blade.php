@@ -1,18 +1,7 @@
 @extends('layouts.layout')
 
-@section('navbar')
-<ul class="nav justify-content-end demo-nav">
-    <li class="nav-item">
-        <a class="nav-link active" href="/dashboard">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="/messages">Messages</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
-    </li>     
-</ul>
-@endsection
+@include('admin.header')
+
 @section('content')
 <br/>
 <h3 style="text-align: center;">List of Customers</h3>
@@ -59,9 +48,9 @@
                     Pending Verification
                 @endif
             </td>
-            <td><a href="customerinfo/{{ $dataVal->id }}">Edit</a> 
+            <td><a href="customer/{{ $dataVal->id }}">Edit</a> 
                 @if($dataVal->role != 1) 
-                | <a href="deletecustomerinfo/{{ $dataVal->id }}" onclick="return confirm('Are you sure you want to delet?')">Delete</a>
+                | <a href="deletecustomer/{{ $dataVal->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
                 @endif
             </td>
         </tr>

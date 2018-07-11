@@ -1,18 +1,7 @@
 @extends('layouts.layout')
 
-@section('navbar')
-<ul class="nav justify-content-end demo-nav">
-    <li class="nav-item">
-        <a class="nav-link active" href="/dashboard">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="/messages">Messages</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
-    </li>
-</ul>
-@endsection
+@include('admin.header')
+
 @section('content')
 <br/>
 <h3 style="text-align: center;">Customer Messages</h3>

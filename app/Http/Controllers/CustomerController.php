@@ -39,7 +39,7 @@ class CustomerController extends Controller
                 ->first();
             if($user_obj && decrypt($user_obj->password) == $user_data['password'] ){                                
                 if($user_obj->role == 1 && $user_obj->status == 1) {
-                    $request->session()->put('id', $user_obj->id);
+                    $request->session()->put('admin_id', $user_obj->id);
                     return redirect('dashboard');
                 }
                 if($user_obj->role == 0 && $user_obj->status == 1) {

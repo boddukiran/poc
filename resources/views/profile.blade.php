@@ -1,24 +1,12 @@
 @extends('layouts.layout')
 
-@section('navbar')
-<ul class="nav justify-content-end demo-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="/message">Messages</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-    </li>        
-</ul>
-@endsection
+@include('header')
 
 @section('content')
 <div class="container login-content">
     <div class="row justify-content-center">
         <div class="col-4">
-            <h1>Profile</h1>
+            <h1>Edit Profile</h1>
             <form id="register-form" method="post" action="{{action('CustomerController@updateCustomerInfo')}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="cid" id="cid" value="{{ $userDetails->id }}">
@@ -48,7 +36,7 @@
                         <option  @if($userDetails->country == $country->nicename) Selected @endif value="{{ $country->phonecode }}">{{ $country->nicename }}</option>                
                     @endforeach
                     </select>
-                    <input type="hidden" name="country" />
+                    <input type="hidden" name="country" value="{{ $userDetails->country }}" />
                 </div>                
                 <div class="form-group">
                     <input type="text" name="state" class="form-control" placeholder="State" value="{{$userDetails->state}}">

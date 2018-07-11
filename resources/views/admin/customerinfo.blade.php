@@ -1,18 +1,6 @@
 @extends('layouts.layout')
 
-@section('navbar')
-<ul class="nav justify-content-end demo-nav">
-    <li class="nav-item">
-        <a class="nav-link active" href="/dashboard">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" href="/messages">Messages</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
-    </li>
-</ul>
-@endsection
+@include('admin.header')
 
 @section('content')
 <div class="container login-content">
@@ -48,7 +36,7 @@
                         <option  @if($customerInfo->country == $country->nicename) Selected @endif value="{{ $country->phonecode }}">{{ $country->nicename }}</option>                
                     @endforeach
                     </select>
-                    <input type="hidden" name="country" />
+                    <input type="hidden" name="country"  value="{{ $customerInfo->country }}" />
                 </div>                
                 <div class="form-group">
                     <input type="text" name="state" class="form-control" placeholder="State" value="{{$customerInfo->state}}">
